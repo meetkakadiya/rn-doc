@@ -575,3 +575,10 @@ export default class Database {
 
 
 }
+// header shadow remove
+
+   shadowColor: 'transparent',
+shadowRadius: 0,
+shadowOffset: {
+height: 0,
+},
