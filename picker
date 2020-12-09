@@ -1,0 +1,62 @@
+import React, { Component } from 'react'
+import { Text, StyleSheet, View ,Platform} from 'react-native'
+import DateTimePicker from '@react-native-community/datetimepicker';
+export default class Maps extends Component {
+  constructor() {
+    super();
+    this.state = {
+      date: new Date(),
+      show: false,
+      currentDate: ''
+    }
+  }
+  onChange = (event, selectedDate) => {
+    var stDate = selectedDate || 'this.state.date'
+    console.log('......', stDate);
+    this.setState({currentDate:stDate})
+    this.setState({show:false})
+  
+}
+
+  render() {
+    return (
+      <View style={styles.main}>
+        <View style={{width:'50%',height:40,borderWidth:1}}>
+        {Platform.OS == 'android' ?
+          <View>
+          <Text onPress={()=>this.setState({show:true})}>{ `${this.state.currentDate}`}</Text>
+              {this.state.show ? 
+                <DateTimePicker
+                  testID="dateTimePicker"
+                  value={this.state.date}
+                  mode={'countdown'}
+                  is24Hour={true}
+                  display="spinner"
+                  onChange={this.onChange}
+              />
+              :null
+            }
+            
+              </View>
+           : 
+          <DateTimePicker
+          testID="dateTimePicker"
+          value={this.state.date}
+          mode={'date'}
+          is24Hour={true}
+              display='default'
+              textColor='red'
+          onChange={this.onChange}
+        />
+           } 
+       </View>
+      </View>
+    )
+  }
+}
+
+const styles = StyleSheet.create({
+  main: {
+    flex:1
+  }
+})
