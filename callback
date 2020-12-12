@@ -1,0 +1,46 @@
+import React, { useEffect } from 'react';
+import { StyleSheet, Text, View } from 'react-native'
+import Demo,{checkCallBack} from './demo'
+
+const Mybooking = () => {
+    useEffect(() => {
+        callAPI()
+    })
+
+
+    const callAPI = () => {
+        var data = 'Hello guys'
+        // checkCallBack(data)
+        console.log('::::::::::::',checkCallBack(data));
+        
+    }
+
+    return (
+        <View>
+            <Text>Mybooking</Text>
+        </View>
+    )
+}
+
+export default Mybooking
+
+const styles = StyleSheet.create({})
+
+
+
+
+
+
+import React, { Component } from 'react'
+import { Text, View } from 'react-native'
+
+ class demo extends Component {
+    static name ='meet'
+ }
+export const checkCallBack = (data) => {
+    console.log('...........inSideFunc.............', data);
+    var res = 'call back success'
+    return res
+    
+}
+export default demo
