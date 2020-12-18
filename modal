@@ -1,0 +1,52 @@
+import React,{useState,useEffect} from 'react'
+// import { StyleSheet, Text, View } from 'react-native'
+// import MyModal from './Modal'
+
+// var dataVal = [{
+//   "name": "All Type",
+//   "img":require('../Assets/Images/deliverytruck.png'),
+//   "hex": "#ffbdb2"
+// },
+// {
+//   "name": "Packing",
+//   "img":require('../Assets/Images/box.png'),
+//   "hex": "#ffec99"
+// },]
+// const demo = () => {
+//   const [visible, setvisible] = useState(false)
+// const [data,setData]=useState('')
+//   const getValue = (value) => {
+//     console.log('............', value)
+//     setvisible(false)
+//   }
+//   useEffect(() => {
+//     // var info = []
+//     // {dataVal.map((item) => {
+//     //   info.push(item.name)
+//     // })
+//     // setData(info)
+//     // }
+//     //   // setData(info),
+//     console.log('.........................')
+
+// },[])
+//   return (
+//     <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
+//       <Text onPress={()=>setvisible(true)}>hello</Text>
+
+//       <MyModal
+//         visible={visible}
+//         callback={(value) => getValue(value)}
+//         array={dataVal}
+
+//          label={data}
+//         // value={'item'}
+//       />
+
+//     </View>
+//   )
+// }
+
+// export default demo
+
+// const styles = StyleSheet.create({})
