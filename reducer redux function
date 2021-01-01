@@ -1,0 +1,50 @@
+export const ADD_ITEM = 'ADD_ITEM'
+export const REMOVE_ITEM = 'REMOVE_ITEM'
+export const UPDATE_ITEM = 'UPDATE_ITEM'
+export const addItem = (item) => ({
+  type: ADD_ITEM,
+  payload: item,
+
+})
+
+export const updateItem = (item) => ({
+  type: UPDATE_ITEM,
+  payload: item,
+})
+export const removeItem = id => ({
+  type: REMOVE_ITEM,
+  payload: id
+})
+
+const initialState = {
+  itemList: []
+}
+const rootReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ADD_ITEM:
+      return {
+        ...state,
+        itemList: state.itemList.concat(
+          action.payload
+          // id: Math.random(),
+          // name: action.payload,
+          // pass:action.payload1
+        )
+      }
+    case UPDATE_ITEM:
+      return {
+        ...state,
+        itemList: state.itemList.map(
+          (content, i) => content.id === action.payload.id ? { ...content, des: action.payload.des, Additional: action.payload.Additional,path:action.payload.path }
+            : content)
+      };
+    case REMOVE_ITEM:
+      return {
+        ...state,
+        itemList: state.itemList.filter(item => item.id !== action.payload)
+      }
+    default:
+      return state
+  }
+}
+export default rootReducer
