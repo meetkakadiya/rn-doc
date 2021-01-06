@@ -1,0 +1,99 @@
+import React, { Component } from 'react'
+import { Text, View, TouchableOpacity, Image, StyleSheet } from 'react-native'
+import myStyle from '../cmmonClass/StyleSheet';
+
+export class CustomHeader extends Component {
+    render() {
+        return (
+            <View style={myStyle.headerStyle}>
+                <View style={myStyle.headerTitleContainerStyle}>
+                    <View style={{ flexDirection: 'row', }}>
+                        <Image style={{ height: 45, width: 45 }}
+                            source={require('../../assets/Image/ic_launcher_round.png')}
+                        />
+                        <View style={{ justifyContent: 'center', marginLeft: 10 }}>
+                            <Text style={myStyle.headerTitleSt}>NovaZapp</Text>
+                        </View>
+                    </View>
+                    <Text style={myStyle.headerTitleSt}>{this.props.headerTitle}</Text>
+                </View>
+                <TouchableOpacity onPress={this.props.headerLeftOnPress} style={myStyle.headerLeftTouchStyle}>
+                    {/* <Image style={this.props.headerLeftImageStyle}
+                        source={this.props.headerLeftImage}
+                    /> */}
+                    <Image style={myStyle.headerLeftImageStyle}
+                        source={this.props.backIcon == false ? null : require('../../assets/Image/back_icon.png')}
+                        resizeMode='contain'
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={this.props.headerRightOnPress} style={myStyle.headerRightTouchStyle}>
+                    <Image style={myStyle.headerRightImageStyle}
+                        source={require('../../assets/Image/alarm-bell.png')}
+                        resizeMode='contain'
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity onPress={this.props.headerRightOnPress1} style={[myStyle.headerRightTouchStyle, { right: 45 }]} >
+                    <Image style={myStyle.headerRightImageStyle}
+                        source={require('../../assets/Image/Profile.png')}
+                        resizeMode='contain'
+                    />
+                </TouchableOpacity>
+
+            </View >
+
+        )
+    }
+}
+
+export default CustomHeader
+
+
+
+
+
+
+
+
+   headerStyle: {
+        height: BaseClass.HeaderHeight,
+        borderBottomWidth: 0.5,
+        borderBottomColor: 'white',
+        justifyContent: 'center',
+        backgroundColor: BaseClass.THEM_COLOR
+    },
+    headerTitleContainerStyle: {
+        alignItems: 'center',
+        top: Platform.OS == 'ios' ? (isIphoneX() ? 25 : 20) : 12
+    },
+    headerTitleSt: {
+        fontFamily: BaseClass.fontFamily,
+        fontSize: 16,
+        color: 'white'
+    },
+    headerRightTouchStyle: {
+        height: 35,
+        width: 35,
+        right: 10,
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5,
+        top: Platform.OS == 'ios' ? (isIphoneX() ? 45 : 20) : null
+    },
+    headerRightImageStyle: {
+        height: 30, width: 30, tintColor: 'white'
+    },
+    headerLeftTouchStyle: {
+        height: 35,
+        width: 35,
+        left: 10,
+        position: 'absolute',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5,
+        top: Platform.OS == 'ios' ? (isIphoneX() ? 45 : 20) : null
+    },
+    headerLeftImageStyle: {
+        height: 30, width: 30, tintColor: 'white'
+    },
+
