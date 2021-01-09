@@ -1,0 +1,13 @@
+ {this.state.bannerImages == null ? null :
+                            <FlatListSlider
+                                data={this.state.bannerImages}
+                                timer={5000}
+                                contentContainerStyle={{ height: 100 }}
+                                onPress={(item) => this.onBannerClick(this.state.bannerImages[item])}
+                                indicatorContainerStyle={{ position: 'absolute', bottom: 10 }}
+                                indicatorActiveColor={'#FF0000'}
+                                indicatorInActiveColor={'#ffffff'}
+                                indicatorActiveWidth={30}
+                                animation
+                            />
+                        }
