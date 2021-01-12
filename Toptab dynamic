@@ -1,0 +1,65 @@
+const MyTabs = () => {
+    const [catTab, setCatTab] = useState([])
+    // const [homeTab, setHomeTab] = useState([])
+    const [isLoading, setIsLoding] = useState(false)
+    useEffect(() => {
+        setIsLoding(true)
+        fetch('http://vasundharaapps.com/artwork_apps/api/AdvertiseNewApplications/17/com.latest.status.message.text.jokes.funny')
+            .then((response) => response.json())
+            .then((responseJson) => {
+                let cat_tab = responseJson.app_center
+                let home_tab = responseJson.home
+                setCatTab(cat_tab)
+                // setHomeTab(home_tab)
+                setIsLoding(false)
+                // console.log('*************', cat_tab);
+
+            })
+    }, [])
+    return (
+        <>
+            {!isLoading ?
+                <Tab.Navigator
+                    tabBarOptions={{
+                        indicatorContainerStyle: {
+                            backgroundColor: ButtonBackGroundColor
+                        },
+                        indicatorStyle: {
+                            backgroundColor: ButtonTextColor,
+                            bottom: scale(2),
+                            height: scale(2),
+
+                        },
+                        showLabel: true,
+                        labelStyle: {
+                            fontSize: scale(12),
+                            color: ButtonTextColor
+
+                        },
+                        scrollEnabled: true,
+                        bounces: false,
+                        tabStyle:{
+                            width:'auto'
+                        }
+                    }}
+                >
+                     <Tab.Screen name='Home' component={Home} options={{ tabBarLabel: 'Home' }} />
+
+                    {catTab.length > 0 && catTab.map((item, index) => {
+                        return (
+                            <Tab.Screen key={index} name={item.name} component={Category} options={Category.navigationOption} />
+                        )
+                    })}
+                </Tab.Navigator> :
+                <View style={styles.main}>
+
+                    <View style={styles.loader}>
+                        <ActivityIndicator color={ButtonBackGroundColor} size='large' />
+                    </View>
+
+
+                </View>
+            }
+        </>
+    )
+}
