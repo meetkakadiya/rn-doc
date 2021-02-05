@@ -1,0 +1,29 @@
+ if (responseJson.Result !== null) {
+                let appTypeList = responseJson.Result
+                appTypeList.map(item => {
+                    if (item.ApprovalType == 'All') {
+                        global.alertCount = item.ApprovalTypeCount
+                        return
+                    }
+                })
+                this.setState({
+                    typeApproval: appTypeList,
+                })
+                this.getListOfApprovals();
+            }
+
+
+
+
+
+
+selectItem = (item, index) => {
+        item.isSelected = !item.isSelected
+        console.log('Index: ', index)
+        this.state.listApproval[index] = item
+        this.forceUpdate()
+        let selectedData = this.state.listApproval.filter(item => item.isSelected == true)
+        this.setState({
+            selectedData: selectedData
+        })
+    }
