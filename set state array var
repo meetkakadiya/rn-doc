@@ -1,0 +1,25 @@
+ if (responseJson.Result !== null) {
+                let approvalList = responseJson.Result.map((item) => {
+                    item.isSelected = false
+                    return item
+                })
+                this.setState({
+                    listApproval: approvalList,
+                    isLoading: false
+                })
+                //console.log('DATA SET OK .....', this.state.listApproval)
+            }
+            
+            
+            
+            
+             selectItem = (item, index) => {
+        item.isSelected = !item.isSelected
+        console.log('Index: ', index)
+        this.state.listApproval[index] = item
+        this.forceUpdate()
+        let selectedData = this.state.listApproval.filter(item => item.isSelected == true)
+        this.setState({
+            selectedData: selectedData
+        })
+    }
